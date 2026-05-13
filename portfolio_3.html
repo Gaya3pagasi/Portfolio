@@ -171,15 +171,6 @@
       animation: float 8s ease-in-out infinite;
       overflow: hidden;
     }
-    .hero-shape img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      opacity: 0.85;
-      mix-blend-mode: luminosity;
-      transition: opacity 0.4s ease, mix-blend-mode 0.4s ease;
-    }
     .hero-shape:hover img {
       opacity: 1;
       mix-blend-mode: normal;
@@ -417,12 +408,35 @@
       section { padding: 5rem 1.5rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
+
+        /* PROJECT HOVER PREVIEW */
+    #project-preview-img {
+      position: fixed;
+      width: 320px;
+      max-width: 36vw;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 6px;
+      pointer-events: none;
+      z-index: 9000;
+      opacity: 0;
+      transform: scale(0.9) rotate(-2deg);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+      display: block;
+    }
+    #project-preview-img.show {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
   </style>
 </head>
 <body>
 
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
+
+  <img id="project-preview-img" src="" alt="project preview">
 
   <!-- NAV -->
   <nav>
@@ -523,9 +537,9 @@
       Things I've<br><em>made.</em>
     </h2>
     <div class="project-list">
-      <a href="#" class="project-item reveal">
+      <a href="project-template.html" class="project-item reveal" data-img="Free_Food_Bag_Mockup_1.jpg">
         <span class="project-num">001</span>
-        <span class="project-name">Archetype Studio — Brand Identity</span>
+        <span class="project-name"> Refill handwash-Sustainable design </span>
         <div class="project-meta">
           <span class="project-tag">Branding</span>
           <span class="project-year">2025</span>
@@ -533,23 +547,23 @@
       </a>
       <a href="#" class="project-item reveal">
         <span class="project-num">002</span>
-        <span class="project-name">Bloom — App UI & Motion</span>
+        <span class="project-name"> Art Museum </span>
         <div class="project-meta">
           <span class="project-tag">UI/UX</span>
           <span class="project-year">2025</span>
         </div>
       </a>
-      <a href="#" class="project-item reveal">
+      <a href="#" class="project-item reveal" >
         <span class="project-num">003</span>
-        <span class="project-name">Meridian — Editorial Magazine</span>
+        <span class="project-name">...</span>
         <div class="project-meta">
           <span class="project-tag">Editorial</span>
           <span class="project-year">2025</span>
         </div>
       </a>
-      <a href="#" class="project-item reveal">
+      <a href="#" class="project-item reveal" >
         <span class="project-num">004</span>
-        <span class="project-name">Vesper — Packaging System</span>
+        <span class="project-name">...</span>
         <div class="project-meta">
           <span class="project-tag">Packaging</span>
           <span class="project-year">2024</span>
@@ -557,7 +571,7 @@
       </a>
       <a href="#" class="project-item reveal">
         <span class="project-num">005</span>
-        <span class="project-name">Nova Labs — Campaign Direction</span>
+        <span class="project-name">...</span>
         <div class="project-meta">
           <span class="project-tag">Campaign</span>
           <span class="project-year">2024</span>
@@ -613,8 +627,8 @@
       Open to freelance projects, collaborations, and conversations about work that doesn't look like everything else.
     </p>
     <div class="contact-links reveal">
-      <a href="mailto:hello@yourname.com" class="contact-link">hello@yourname.com</a>
-      <a href="#" class="contact-link">LinkedIn</a>
+      <a href="mailto:gayatrim8171@gmail.com" class="contact-link">gayatrim8171@gmail.com</a>
+      <a href="https://www.linkedin.com/in/gayatri-m-6170382b3/" target="_blank" class="contact-link">LinkedIn</a>
       <a href="#" class="contact-link">Instagram</a>
       <a href="#" class="contact-link">Behance</a>
     </div>
@@ -627,7 +641,7 @@
     <span>Based in Your City</span>
   </footer>
 
-  <script>
+  <script  data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Custom cursor
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
@@ -654,6 +668,40 @@
       });
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
+
+
+    // Hover Image Preview for Projects
+    const projectLinks = document.querySelectorAll('.project-item[data-img]');
+    const previewImage = document.getElementById('project-preview-img');
+
+    projectLinks.forEach(link => {
+      link.addEventListener('mouseenter', (e) => {
+        previewImage.src = link.getAttribute('data-img');
+        previewImage.classList.add('show');
+        positionPreview(e);
+      });
+
+      link.addEventListener('mousemove', (e) => {
+        positionPreview(e);
+      });
+
+      link.addEventListener('mouseleave', () => {
+        previewImage.classList.remove('show');
+      });
+    });
+
+    function positionPreview(e) {
+      let x = e.clientX + 30;
+      let y = e.clientY - 20;
+      if (x + previewImage.offsetWidth > window.innerWidth - 20) {
+        x = e.clientX - previewImage.offsetWidth - 30;
+      }
+      if (y + previewImage.offsetHeight > window.innerHeight - 20) {
+        y = window.innerHeight - previewImage.offsetHeight - 20;
+      }
+      previewImage.style.left = x + 'px';
+      previewImage.style.top  = y + 'px';
+    }
   </script>
 </body>
 </html>
