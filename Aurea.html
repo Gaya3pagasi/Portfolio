@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auréa — Brand Identity — Gayatri M</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel='stylesheet' href='style.css'>
+
+  <!--
+    ============================================================
+    HOW TO USE THIS TEMPLATE
+    ============================================================
+    1. Duplicate this file and rename it for your project,
+       e.g. "project-art-museum.html".
+    2. Update the <title> above.
+    3. Fill in the title, tagline, meta (role/year/tools) and
+       description text below (look for CHANGE ME comments).
+    4. Add your images in the "PROJECT GALLERY" section — just
+       copy one <figure class="project-img"> block and paste it
+       again for each extra image. There's no limit, add as
+       many as you like.
+    5. Point the project card on the homepage (index.html) to
+       this file's href.
+    ============================================================
+  -->
+
+  <style>
+    /* Extra styles for this project page only — reuses the
+       colour/font variables already defined in style.css */
+    .project-head {
+      padding: 9rem 3rem 3rem;
+      max-width: 900px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link::before { content: '←'; font-size: 0.9rem; }
+    .back-link:hover { color: var(--ink); }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+    .project-title em { font-style: italic; color: var(--blush); }
+
+    .project-tagline {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--mid);
+      max-width: 560px;
+    }
+
+    .project-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid #d8d3ca;
+    }
+    .project-meta-row .label {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.35rem;
+    }
+    .project-meta-row .value {
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    .project-desc {
+      padding: 0 3rem 4rem;
+      max-width: 700px;
+      font-size: 0.85rem;
+      line-height: 2;
+      color: var(--mid);
+    }
+    .project-desc p + p { margin-top: 1.5rem; }
+
+    /* PROJECT GALLERY — stacked, full-width images by default */
+    .project-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 0 3rem 6rem;
+    }
+    .project-img { width: 100%; }
+    .project-img img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .project-img figcaption {
+      margin-top: 0.6rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      color: var(--mid);
+    }
+
+    /* Optional: put two images side-by-side by wrapping them in
+       <div class="project-img-pair"> instead of two separate
+       .project-img blocks */
+    .project-img-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .project-head, .project-desc, .project-gallery { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .project-img-pair { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <img id="project-preview-img" src="" alt="project preview">
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Gayatri M</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PROJECT HEADER -->
+  <header class="project-head reveal">
+    <a href="index.html#projects" class="back-link">All Projects</a>
+
+    <h1 class="project-title">
+      <em>Auréa</em>
+    </h1>
+
+    <p class="project-tagline">
+      A brand identity for a fine jewelry house built entirely around gold —
+      not just the traditional yellow, white, and rose, but a wider spectrum
+      of blue, purple, and green gold for a modern generation of luxury.
+    </p>
+
+    <div class="project-meta-row">
+      <div>
+        <p class="label">Role</p>
+        <p class="value">Brand & Visual Identity Designer</p>
+      </div>
+      <div>
+        <p class="label">Year</p>
+        <p class="value">2026</p>
+      </div>
+      <div>
+        <p class="label">Tools</p>
+        <p class="value">Brand Research, Moodboarding, AI Image Generation</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO / MOODBOARD — first thing visitors see -->
+  <section class="project-gallery">
+    <figure class="project-img reveal">
+      <img src="images/aurea-moodboard.png" alt="Auréa brand moodboard: inspiration imagery, concept sketch, colour palette, material palette, typography, and keywords">
+      <figcaption>Full brand moodboard — inspiration, concept, colour and material palette, typography, and keywords</figcaption>
+    </figure>
+  </section>
+
+  <!-- PROJECT DESCRIPTION -->
+  <section class="project-desc reveal">
+    <p>
+      Auréa takes its name from the Latin <em>aurea</em>, the feminine form of
+      <em>aureus</em> — "golden." It's a fitting root for a brand built entirely
+      around one material: gold, reimagined. The brief was to design an identity
+      for a jewelry house that treats gold not as a single traditional colour but
+      as a full spectrum — yellow, rose, and white sitting alongside blue,
+      violet, and emerald gold — aimed at a modern generation who want heritage
+      without the expected palette.
+    </p>
+    <p>
+      The concept, "Timeless Roots. Modern Blooms," runs through every part of
+      the identity: a root system grounded in heritage that grows outward into
+      new, unexpected colour. That idea shaped the moodboard — raw gold nuggets
+      and molten gold texture on one side for heritage, a hand-drawn
+      root-to-bloom motif to bridge old and new, and a saturated six-colour gold
+      palette (yellow, rose, white, emerald, sapphire, and violet gold) to carry
+      the "modern bloom" half of the story.
+    </p>
+    <p>
+      Because so much of the brand rests on a colour story that doesn't exist in
+      real jewelry yet, reference photography alone couldn't show it. I used AI
+      image generation, backed by research into real gold-plating and
+      colour-treatment techniques, to visualise what tinted-gold rings and a
+      floral, multi-gold necklace would actually look like worn — giving the
+      identity a believable product world to sit inside before a single physical
+      piece exists.
+    </p>
+    <p>
+      Typography pairs a serif display face (Playfair Display) for the wordmark
+      with a clean sans (Montserrat) for supporting text — the same
+      heritage/innovation contrast as the palette, translated into type. The
+      result is a complete, presentation-ready brand board: name, concept,
+      palette, materials, typography, and lifestyle imagery, all reinforcing one
+      idea — heritage that's still allowed to evolve.
+    </p>
+  </section>
+
+  <!-- SUPPORTING VISUALS — smaller, AI-generated product studies -->
+  <section class="project-gallery">
+    <div class="project-img-pair reveal">
+      <figure class="project-img">
+        <img src="images/aurea-necklace-detail.png" alt="Close-up detail of the Auréa multi-gold floral necklace">
+        <figcaption>AI-generated product study — necklace detail</figcaption>
+      </figure>
+      <figure class="project-img">
+        <img src="images/aurea-rings.png" alt="Auréa ring collection in rose, white, green, purple, and blue gold">
+        <figcaption>AI-generated product study — ring collection across the gold spectrum</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!--
+    ============================================================
+    PROJECT GALLERY — add as many images as you like
+    ============================================================
+    To add ONE more image full-width:
+      → copy a <figure class="project-img"> block and paste it
+        below the last one, then change the src/alt/caption.
+
+    To add TWO images side by side:
+      → wrap two <figure class="project-img"> blocks inside
+        <div class="project-img-pair"> ... </div>
+    ============================================================
+  -->
+ 
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Gayatri M</span>
+    <span>Designed & Built with intention</span>
+    <span>Based in Your City</span>
+  </footer>
+
+  <script src="act.js"></script>
+</body>
+</html>
