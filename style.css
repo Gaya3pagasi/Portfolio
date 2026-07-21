@@ -399,6 +399,11 @@
       .project-meta { display: none; }
       section { padding: 5rem 1.5rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
+
+      /* Disable custom cursor + hover-preview popup on touch devices */
+      body { cursor: auto; }
+      .cursor, .cursor-ring, #project-preview-img { display: none !important; }
+      .project-item { cursor: pointer; }
     }
 
         /* PROJECT HOVER PREVIEW */
