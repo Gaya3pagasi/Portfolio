@@ -81,6 +81,7 @@
 
     /* HERO */
     #hero {
+      margin-top: -10%;
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
