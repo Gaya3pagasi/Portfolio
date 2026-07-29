@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video &amp; Image Belt — Gayatri M</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel='stylesheet' href='style.css'>
+
+  <!--
+    ============================================================
+    HOW TO USE THIS TEMPLATE
+    ============================================================
+    1. Duplicate this file and rename it for your project.
+    2. Update the <title> above.
+    3. Fill in the title, tagline, meta and description text
+       below (look for CHANGE ME comments).
+    4. Two conveyor belts sit below the description:
+       - TOP belt = horizontal (landscape) images/videos,
+         scrolls left → right.
+       - BOTTOM belt = vertical (portrait) images/videos,
+         scrolls right → left (opposite direction).
+       Add media by copying one <div class="belt-item"> block
+       and pasting it inside the matching <div class="belt-track">.
+       Use <img> for a photo or <video> for a clip — both use
+       the same belt-item wrapper. No limit on how many you add.
+       IMPORTANT: each track's content is duplicated once right
+       after itself (a "copy 2" block) so the loop is seamless —
+       when you add or remove an item, make the exact same change
+       in BOTH copies inside that track, or the loop will jump.
+       Each item's box height is fixed but its width auto-adjusts
+       to match that image/video's own shape, so nothing gets
+       stretched or cropped — no need to force an exact aspect
+       ratio on your Cloudinary URLs, just optionally cap the
+       size with a transform like h_400,c_limit,q_auto,f_auto
+       (caps height, keeps the full frame, no cropping).
+    5. Point the project card on the homepage (index.html) to
+       this file's href.
+    ============================================================
+  -->
+
+  <style>
+    /* Extra styles for this project page only — reuses the
+       colour/font variables already defined in style.css */
+    .project-head {
+      padding: 9rem 3rem 2rem;
+      max-width: 900px;
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+    .project-title em { font-style: italic; color: var(--blush); }
+
+    /* CONVEYOR BELTS — full-bleed, edge-to-edge rows that
+       auto-scroll in opposite directions and loop seamlessly */
+    .belt-section {
+      padding: 1.25rem 0;
+      overflow: hidden;
+    }
+    .belt-viewport {
+      width: 100%;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .belt-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      gap: 1rem;
+    }
+    /* Top belt: landscape items, scrolls left → right */
+    #belt-horizontal .belt-track {
+      animation: belt-scroll 28s linear infinite reverse;
+    }
+    /* Bottom belt: portrait items, scrolls right → left (opposite) */
+    #belt-vertical .belt-track {
+      animation: belt-scroll 28s linear infinite;
+    }
+    /* pause on hover so a piece can actually be looked at */
+    .belt-track:hover { animation-play-state: paused; }
+    @keyframes belt-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .belt-item {
+      flex: none;
+      height: var(--belt-item-h);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--slate);
+    }
+    .belt-item img,
+    .belt-item video {
+      display: block;
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+    /* Landscape items for the top belt */
+    #belt-horizontal .belt-item { --belt-item-h: 191px; }
+    /* Portrait items for the bottom belt */
+    #belt-vertical .belt-item { --belt-item-h: 380px; }
+    @media (max-width: 768px) {
+      .project-head { padding-left: 1.5rem; padding-right: 1.5rem; }
+      #belt-horizontal .belt-item { --belt-item-h: 135px; }
+      #belt-vertical .belt-item { --belt-item-h: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <img id="project-preview-img" src="" alt="project preview">
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Gayatri M</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PROJECT HEADER -->
+  <header class="project-head reveal">
+    <h1 class="project-title">
+      <!-- CHANGE ME: project title -->
+      Video &amp; Image <em>Belt</em>
+    </h1>
+  </header>
+
+  <!--
+    ============================================================
+    CONVEYOR BELTS
+    ============================================================
+    Two rows, each one auto-scrolling and looping forever.
+
+    TOP belt (#belt-horizontal)  → landscape (16:9) media, moves left → right
+    BOTTOM belt (#belt-vertical) → portrait (9:16) media, moves right → left
+
+    Each belt-track below has its items listed TWICE in a row —
+    "COPY 1" and "COPY 2" — that's what makes the loop seamless
+    (as copy 1 scrolls off, copy 2 is right behind it, identical).
+    When you add, remove, or reorder an item, make the SAME edit
+    in both copies or the belt will visibly jump once per loop.
+
+    For a photo, use:
+      <div class="belt-item"><img src="images/your-photo.jpg" alt="..."></div>
+
+    For a video, use:
+      <div class="belt-item">
+        <video src="images/your-clip.mp4" poster="images/your-poster.jpg" autoplay muted loop playsinline></video>
+      </div>
+    (autoplay only works when the video is muted — that's a browser rule, not a bug)
+    ============================================================
+  -->
+
+  <!-- TOP BELT — horizontal (landscape) media -->
+  <section id="belt-horizontal" class="belt-section reveal">
+    <div class="belt-viewport">
+      <div class="belt-track">
+
+        <!-- COPY 1 -->
+        <div class="belt-item"><video src="https://res.cloudinary.com/gg1cltmm/video/upload/h_400,c_limit,q_auto,f_auto/v1785285653/Comp_1_qf1ibq.mp4" poster="https://res.cloudinary.com/gg1cltmm/video/upload/h_400,c_limit,q_auto,f_auto/v1785285653/Comp_1_qf1ibq.jpg" autoplay muted loop playsinline></video></div>
+        <div class="belt-item"><img src="https://placehold.co/640x360/c8f03a/0f0d0a?text=Photo+2" alt="Landscape video or photo 2"></div>
+        <div class="belt-item"><video src="https://res.cloudinary.com/gg1cltmm/video/upload/v1785293299/Untitled-1_cin70s.mp4" poster= "https://res.cloudinary.com/gg1cltmm/video/upload/v1785293299/Untitled-1_cin70s.jpg" autoplay muted loop playsinline></video></div>
+        <div class="belt-item"><img src="https://placehold.co/640x360/2a2825/f5f0e8?text=Photo+4" alt="Landscape video or photo 4"></div>
+        <div class="belt-item"><img src="https://placehold.co/640x360/c8f03a/0f0d0a?text=Video+5" alt="Landscape video or photo 5"></div>
+
+        <!-- COPY 2 — identical to COPY 1, keep in sync -->
+        <div class="belt-item"><video src="https://res.cloudinary.com/gg1cltmm/video/upload/h_400,c_limit,q_auto,f_auto/v1785285653/Comp_1_qf1ibq.mp4" poster="https://res.cloudinary.com/gg1cltmm/video/upload/h_400,c_limit,q_auto,f_auto/v1785285653/Comp_1_qf1ibq.jpg" autoplay muted loop playsinline></video></div>
+        <div class="belt-item"><img src="https://placehold.co/640x360/c8f03a/0f0d0a?text=Photo+2" alt="Landscape video or photo 2"></div>
+        <div class="belt-item"><img src="https://placehold.co/640x360/f0a07a/0f0d0a?text=Video+3" alt="Landscape video or photo 3"></div>
+        <div class="belt-item"><img src="https://placehold.co/640x360/2a2825/f5f0e8?text=Photo+4" alt="Landscape video or photo 4"></div>
+        <div class="belt-item"><img src="https://placehold.co/640x360/c8f03a/0f0d0a?text=Video+5" alt="Landscape video or photo 5"></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM BELT — vertical (portrait) media, opposite direction -->
+  <section id="belt-vertical" class="belt-section reveal">
+    <div class="belt-viewport">
+      <div class="belt-track">
+
+        <!-- COPY 1 -->
+        <div class="belt-item"><video src="https://res.cloudinary.com/gg1cltmm/video/upload/h_760,c_limit,q_auto,f_auto/v1785285141/vidssave.com_Beauty_And_A_Beat_Jujutsu_Kaisen_season_2_Edit_AMV_256KBPS_q4hewz.mp4" poster="https://res.cloudinary.com/gg1cltmm/video/upload/h_760,c_limit,q_auto,f_auto/v1785285141/vidssave.com_Beauty_And_A_Beat_Jujutsu_Kaisen_season_2_Edit_AMV_256KBPS_q4hewz.jpg" autoplay muted loop playsinline></video></div>
+        <div class="belt-item"><img src="https://res.cloudinary.com/gg1cltmm/image/upload/h_760,c_limit,q_auto,f_auto/v1785292238/Untitled-1-Recovered_y5kvcg.jpg" alt="Portrait artwork"></div>
+        <div class="belt-item"><img src="https://placehold.co/360x640/c8f03a/0f0d0a?text=Reel+3" alt="Portrait video or photo 3"></div>
+        <div class="belt-item"><img src="https://placehold.co/360x640/0f0d0a/f5f0e8?text=Photo+4" alt="Portrait video or photo 4"></div>
+        <div class="belt-item"><img src="https://placehold.co/360x640/f0a07a/0f0d0a?text=Reel+5" alt="Portrait video or photo 5"></div>
+        <div class="belt-item"><img src="https://placehold.co/360x640/c8f03a/0f0d0a?text=Photo+6" alt="Portrait video or photo 6"></div>
+
+        <!-- COPY 2 — identical to COPY 1, keep in sync -->
+        <div class="belt-item"><video src="https://res.cloudinary.com/gg1cltmm/video/upload/h_760,c_limit,q_auto,f_auto/v1785285141/vidssave.com_Beauty_And_A_Beat_Jujutsu_Kaisen_season_2_Edit_AMV_256KBPS_q4hewz.mp4" poster="https://res.cloudinary.com/gg1cltmm/video/upload/h_760,c_limit,q_auto,f_auto/v1785285141/vidssave.com_Beauty_And_A_Beat_Jujutsu_Kaisen_season_2_Edit_AMV_256KBPS_q4hewz.jpg" autoplay muted loop playsinline></video></div>
+        <div class="belt-item"><img src="https://res.cloudinary.com/gg1cltmm/image/upload/h_760,c_limit,q_auto,f_auto/v1785292238/Untitled-1-Recovered_y5kvcg.jpg" alt="Portrait artwork"></div>
+        <div class="belt-item"><img src="https://placehold.co/360x640/c8f03a/0f0d0a?text=Reel+3" alt="Portrait video or photo 3"></div>
+        <div class="belt-item"><img src="https://placehold.co/360x640/0f0d0a/f5f0e8?text=Photo+4" alt="Portrait video or photo 4"></div>
+        <div class="belt-item"><img src="https://placehold.co/360x640/f0a07a/0f0d0a?text=Reel+5" alt="Portrait video or photo 5"></div>
+        <div class="belt-item"><img src="https://placehold.co/360x640/c8f03a/0f0d0a?text=Photo+6" alt="Portrait video or photo 6"></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Gayatri M</span>
+    <span>Designed & Built with intention</span>
+    <span>Based in Your City</span>
+  </footer>
+
+  <script src="act.js"></script>
+  <script>
+    // Safety net: some browsers only allow autoplay if .muted is set as a
+    // JS property (not just the HTML attribute) and play() is called
+    // explicitly. This makes sure every belt video actually starts
+    // and keeps looping even if the attribute alone gets ignored.
+    document.querySelectorAll('.belt-item video').forEach(vid => {
+      vid.muted = true;
+      vid.loop = true;
+      vid.playsInline = true;
+      const tryPlay = () => vid.play().catch(() => {});
+      tryPlay();
+      vid.addEventListener('loadeddata', tryPlay);
+    });
+  </script>
+</body>
+</html>
